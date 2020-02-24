@@ -1,0 +1,324 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databases' at line 1
+mysql> create database BidvestBank;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use BidvestBank;
+Database changed
+mysql> create table BankBranch(branch_name char(15) not null primary key,branch_city char(15),assets char(15));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table Customer(customer_name char(15) not null primary key,customer_street char(15),customer_city char(15));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql> create table CustomerAccount(account_number char(15) not null primary key,branch_name char(15),balance double);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table Loan(loan_number char(15) not null primary key,branch_name char(15),amount double);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table Depositor(customer_name char(15),account_number char(15) not null primary key);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table Borrower(customer_name char(15),loan_number char(15) not null primary key);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table Employee(employee_name char(15) not null primary key,branch_name char(15),salary double);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> insert into BankBranch values('Midrand','Johannesburg',7100000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Newtown','Johannesburg',9000000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Mabopane','Pretoria',400000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into BankBranch values('Belgravia','Kimberly',3700000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Sunnyside','Pretoria',1700000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into BankBranch values('Amanzimtoti','Durban',300000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Universities','Bloemfontein',2100000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Mamelodi','Pretoria',8000000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Modise','Spring','George');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Brooks','Senator','Johannesburg');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Jooste','North','Kimberly');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Lombard','Sand Hill','Nelspruit');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Mokwena','Walnut','Port Elizabeth');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Johnson','Mmabatho','Mafikeng');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Johnsons','Alma','Bloemfontein');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Customer values('Zwane','Main','Mafikeng');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Lindsay','Park','Gearge');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Smith','North','Kimberly');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Dlamini','Putnam','Port Elizabeth');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Customer values('Williams','Nassau','Giyane');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-5324','Newtown',500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-5624','Sunnyside',400);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-7794','Midrand',900);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-4467','Mabopane',700);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-3546','Midrand',750);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CustomerAccount values('A-3453','Universities',700);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-2542','Mamelodi',350);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Depositor values('Johnson','A-5624');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Depositor values('Johnsons','A-5624');
+ERROR 1062 (23000): Duplicate entry 'A-5624' for key 'depositor.PRIMARY'
+mysql> insert into Depositor values('Johnsons','A-05624');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Depositor values('Johnsons','A-7794');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Depositor values('Zwane','A-3546');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Depositor values('Lindsay','A-3453');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Depositor values('Smith','A-4467');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Depositor values('Dlamini','A-2542');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Loan values('L-11','Mamelodi',900);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Loan values('L-14','Newtown',1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Loan values('L-15','Sunnyside',1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Loan values('L-15','Sunnyside',1500);
+ERROR 1062 (23000): Duplicate entry 'L-15' for key 'loan.PRIMARY'
+mysql> insert into Loan values('L-16','Sunnyside',1300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Loan values('L-17','Newtown',1000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Loan values('L-23','Universities',2000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Loan values('l-23','Mabopane',500);
+ERROR 1062 (23000): Duplicate entry 'l-23' for key 'loan.PRIMARY'
+mysql> insert into Loan values('l-93','Mabopane',500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Borrower values('Modise','L-16');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Borrower values('Jooste','L-93');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Borrower values('Johnson','L-15');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Borrower values('Jackson','L-14');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Borrower values('Zwane','L-17');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Borrower values('Smith','L-11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Borrower values('Smiths','L-23');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Borrower values('Williams','L-17');
+ERROR 1062 (23000): Duplicate entry 'L-17' for key 'borrower.PRIMARY'
+mysql> insert into Borrower values('Williams','L-017');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee values('Modise','Sunnyside',1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee values('Brown','Sunnyside',1300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee values('Gopal','Sunnyside',5300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee values('Johnson','Newtown',1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee values('Loreena','Newtown',1300);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Employee values('Peterson','Newtown',2500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee values('Rao','Austin',1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Employee values('Sato','Austin',1600);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from CustomerAccount where balance <=700;
++----------------+--------------+---------+
+| account_number | branch_name  | balance |
++----------------+--------------+---------+
+| A-2542         | Mamelodi     |     350 |
+| A-3453         | Universities |     700 |
+| A-4467         | Mabopane     |     700 |
+| A-5324         | Newtown      |     500 |
+| A-5624         | Sunnyside    |     400 |
++----------------+--------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from Customer where customer_city = 'Johannesburg';
++---------------+-----------------+---------------+
+| customer_name | customer_street | customer_city |
++---------------+-----------------+---------------+
+| Brooks        | Senator         | Johannesburg  |
++---------------+-----------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> select * from Employee where salary >=1500 && branch_name != 'Newtown';
++---------------+-------------+--------+
+| employee_name | branch_name | salary |
++---------------+-------------+--------+
+| Gopal         | Sunnyside   |   5300 |
+| Modise        | Sunnyside   |   1500 |
+| Rao           | Austin      |   1500 |
+| Sato          | Austin      |   1600 |
++---------------+-------------+--------+
+4 rows in set, 1 warning (0.00 sec)
+
+mysql> select avg(salary) from Employee;
++-------------+
+| avg(salary) |
++-------------+
+|      2062.5 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select max(assets) from BankBranch;
++-------------+
+| max(assets) |
++-------------+
+| 9000000     |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from Employee where branch_name = 'Sunnyside';
++---------------+-------------+--------+
+| employee_name | branch_name | salary |
++---------------+-------------+--------+
+| Brown         | Sunnyside   |   1300 |
+| Gopal         | Sunnyside   |   5300 |
+| Modise        | Sunnyside   |   1500 |
++---------------+-------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from Borrower;
++---------------+-------------+
+| customer_name | loan_number |
++---------------+-------------+
+| Williams      | L-017       |
+| Smith         | L-11        |
+| Jackson       | L-14        |
+| Johnson       | L-15        |
+| Modise        | L-16        |
+| Zwane         | L-17        |
+| Smiths        | L-23        |
+| Jooste        | L-93        |
++---------------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from CustomerAccount where balance >=900;
++----------------+-------------+---------+
+| account_number | branch_name | balance |
++----------------+-------------+---------+
+| A-7794         | Midrand     |     900 |
++----------------+-------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from CustommerAccount where balance >600 && branch_name = 'Newtown';
+ERROR 1146 (42S02): Table 'bidvestbank.custommeraccount' doesn't exist
+mysql> select * from CustomerAccount where balance >600 && branch_name = 'Newtown';
+Empty set, 1 warning (0.00 sec)
+
+mysql> select * from BankBranch;
++--------------+--------------+---------+
+| branch_name  | branch_city  | assets  |
++--------------+--------------+---------+
+| Amanzimtoti  | Durban       | 300000  |
+| Belgravia    | Kimberly     | 3700000 |
+| Mabopane     | Pretoria     | 400000  |
+| Mamelodi     | Pretoria     | 8000000 |
+| Midrand      | Johannesburg | 7100000 |
+| Newtown      | Johannesburg | 9000000 |
+| Sunnyside    | Pretoria     | 1700000 |
+| Universities | Bloemfontein | 2100000 |
++--------------+--------------+---------+
+8 rows in set (0.00 sec)
+
+mysql>
